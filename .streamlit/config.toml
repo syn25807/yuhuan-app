@@ -1,0 +1,17 @@
+# Streamlit 的运行配置（部署到云端也会生效）
+
+[server]
+# 手机拍的原图动辄 5～10MB，这里放宽到 30MB，避免上传失败
+maxUploadSize = 30
+
+[theme]
+base = "light"
+primaryColor = "#c86fa6"              # 主色：粉
+backgroundColor = "#fffafc"           # 背景：奶油粉
+secondaryBackgroundColor = "#f7f1ff"  # 次级背景：薰衣草紫
+textColor = "#6b5b73"                 # 文字：紫灰
+font = "sans serif"
+
+[browser]
+# 不上报使用统计
+gatherUsageStats = false
