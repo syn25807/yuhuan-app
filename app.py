@@ -114,6 +114,7 @@ def sidebar() -> None:
 
 def main() -> None:
     ui.inject_css()
+    ui.password_gate()      # 配了 APP_PASSWORD 才生效，用来给公网地址上锁
     sidebar()
 
     # 开屏欢迎语（随机一句 + 淡入动画）

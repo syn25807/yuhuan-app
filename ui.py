@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import html
+import os
 import random
 from typing import Any, Dict, List, Optional
 
@@ -404,6 +405,39 @@ def photo_src(relative: str) -> Optional[str]:
     if not relative or not upload_exists(relative):
         return None
     return str(upload_path(relative))
+
+
+def password_gate() -> None:
+    """可选的访问口令。
+
+    只有配置了 APP_PASSWORD 才会拦截：
+      * 部署到 Streamlit Cloud 时，在应用的 Settings → Secrets 里写
+        ``APP_PASSWORD = "你们的暗号"``；
+      * 本地想试的话，设个环境变量 ``APP_PASSWORD=xxx`` 也行。
+    没配置就完全不拦，本地开发不受影响。
+    """
+    expected = ""
+    try:
+        expected = st.secrets.get("APP_PASSWORD", "")   # type: ignore[union-attr]
+    except Exception:  # 没有 secrets.toml 时会抛异常，忽略即可
+        expected = ""
+    expected = expected or os.environ.get("APP_PASSWORD", "")
+    if not expected or st.session_state.get("_pwd_ok"):
+        return
+
+    card(
+        '<div class="center"><div style="font-size:2.4rem;">🔒</div>'
+        '<div class="rec-body">这是两个人的小窝，输入暗号才能进</div></div>',
+        extra_class="tint",
+    )
+    pwd = st.text_input("暗号", type="password", label_visibility="collapsed",
+                        placeholder="输入我们的暗号…")
+    if pwd and pwd == expected:
+        st.session_state["_pwd_ok"] = True
+        rerun()
+    elif pwd:
+        st.error("暗号不对哦，再想想～")
+    st.stop()
 
 
 def show_image(path: str) -> bool:

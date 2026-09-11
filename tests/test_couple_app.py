@@ -130,6 +130,33 @@ class SplashTest(unittest.TestCase):
         self.assertEqual(state["index"], 1)
 
 
+class PasswordGateTest(unittest.TestCase):
+    """可选的访问暗号：配了 APP_PASSWORD 才生效。"""
+
+    def setUp(self):
+        os.environ["APP_PASSWORD"] = "our-secret"
+        self.at = AppTest.from_file(str(APP_DIR / "app.py"), default_timeout=60)
+        self.at.run()
+
+    def tearDown(self):
+        os.environ.pop("APP_PASSWORD", None)
+
+    def test_gate_blocks_then_unlocks(self):
+        # 一开始只有暗号输入框，页面内容还没出来
+        self.assertEqual(len(self.at.text_input), 1)
+        self.assertEqual(len(self.at.selectbox), 0)
+
+        # 输错了要提示
+        self.at.text_input[0].set_value("wrong").run()
+        self.assertTrue(self.at.error)
+        self.assertEqual(len(self.at.selectbox), 0)
+
+        # 输对了才进得去
+        self.at.text_input[0].set_value("our-secret").run()
+        self.assertTrue(self.at.session_state["_pwd_ok"])
+        self.assertTrue(len(self.at.selectbox) >= 1)
+
+
 class CoupleAppTest(unittest.TestCase):
     """每个测试都从干净的数据目录开始。"""
 
