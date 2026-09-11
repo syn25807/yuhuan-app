@@ -1,0 +1,6 @@
+# 网页框架（Streamlit Cloud 会自动安装这里的依赖）
+streamlit>=1.45
+
+# 图片处理：Streamlit 自带 Pillow，这里显式写出来，
+# 是为了保证「上传的图片能否正常打开」这件事在各个环境里都一致。
+Pillow>=10.0
