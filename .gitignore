@@ -8,20 +8,12 @@ __pycache__/
 # 上传的照片（属于私密内容，不要提交到公开仓库）
 uploads/
 
-# 两个人自己的记录（运行时生成，同样不要提交）
-data/checkins.json
-data/moods.json
-data/diaries.json
-data/meals.json
-data/photos.json
-data/expenses.json
-data/countdowns.json
-data/learning.json
-data/transcripts.json
-data/tasks.json
-data/task_done.json
-data/config.json
-data/splash_state.json
+# 两个人的记录（运行时生成，属于私密内容，不要提交）
+# 只放行三个静态内容库，其余 data/*.json 一律不上传
+data/*.json
+!data/quotes.json
+!data/business_phrases.json
+!data/poems.json
 data/*.tmp
 
 # 密钥（如果以后加了访问密码就放这里）
