@@ -94,11 +94,11 @@ class SplashTest(unittest.TestCase):
         """称呼和学校信息已更新，logo 是粉色爱心。"""
         self.assertEqual(ui.HER_NAME, "李玉环")
         self.assertEqual(ui.HER_NICK, "玉环")
-        self.assertEqual(ui.ME_NAME, "孙雅楠")
+        self.assertEqual(ui.ME_NAME, "楠")
         self.assertEqual(ui.LOGO, "💗")
         self.assertIn("李玉环", ui.PEOPLE[0])
         self.assertTrue(ui.PEOPLE[0].startswith("💗"))
-        self.assertIn("孙雅楠", ui.PEOPLE[1])
+        self.assertIn(ui.ME_NICK, ui.PEOPLE[1])
 
     def test_every_line_shown_once_before_repeat(self):
         """连着取 48 次，应该把 48 句各播一次，不重不漏。"""

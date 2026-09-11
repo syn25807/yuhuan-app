@@ -18,16 +18,16 @@ import streamlit as st
 # 常量：人物、开屏文案、选项
 # --------------------------------------------------------------------------- #
 
-APP_TITLE = "雅楠 & 玉环的小窝"
+APP_TITLE = "楠 & 玉环的小窝"
 LOGO = "💗"                # 代表性 logo：粉色爱心
 
 HER_NAME = "李玉环"        # 洛阳理工学院 · 商务英语
 HER_NICK = "玉环"
-ME_NAME = "孙雅楠"         # 西南民大 · 汉语言文学
+ME_NAME = "楠"           # 成都 · 汉语言文学
 ME_NICK = "楠"
 
 # 上传 / 打卡时选择「我是谁」
-PEOPLE = [f"{LOGO} {HER_NICK}（{HER_NAME}）", f"💜 {ME_NICK}（{ME_NAME}）"]
+PEOPLE = [f"{LOGO} {HER_NICK}（{HER_NAME}）", f"💜 {ME_NICK}"]
 
 # 开屏欢迎语：每次刷新显示下一句，一轮之内不重复（顺序存在 splash_state.json）
 SPLASH_LINES = [

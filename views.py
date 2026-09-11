@@ -625,7 +625,7 @@ def page_countdown() -> None:
     # ---- 快捷添加常见事件 ---- #
     muted("常用事件一键填入名称：")
     preset_cols = st.columns(4)
-    for col, preset in zip(preset_cols, ["下次见面", "玉环生日", "雅楠生日", "在一起纪念日"]):
+    for col, preset in zip(preset_cols, ["下次见面", "玉环生日", "楠生日", "在一起纪念日"]):
         col.button(preset, key=f"preset_{preset}", on_click=_preset_name, args=(preset,))
 
     with st.form("countdown_form", clear_on_submit=True):
@@ -742,7 +742,7 @@ def copy_dialog(poem: Dict[str, Any]) -> None:
 
 
 def page_study() -> None:
-    """学习角：玉环的商务英语 + 雅楠的文学积累。"""
+    """学习角：玉环的商务英语 + 楠的文学积累。"""
     phrases = db.read_json("business_phrases.json", [])
     poems = db.read_json("poems.json", [])
     learning = db.read_json(db.LEARNING, {})
@@ -783,10 +783,10 @@ def page_study() -> None:
     else:
         st.info("短语库是空的，往 data/business_phrases.json 里加几条吧～")
 
-    # ---------------- 雅楠的文学角 ---------------- #
+    # ---------------- 楠的文学角 ---------------- #
     st.write("")
     section(f"{ME_NICK}的文学角", "📖")
-    muted(f"{ME_NAME} · 西南民大 · 汉语言文学 · 每天一句诗")
+    muted(f"{ME_NAME} · 成都 · 汉语言文学 · 每天一句诗")
     if poem:
         card(
             f'<div class="rec-body" style="font-size:1.16rem;font-weight:600;line-height:1.9;">'
@@ -844,7 +844,7 @@ def _owner_label(owner: str) -> str:
     """任务栏的小标题。"""
     if owner == HER_NICK:
         return f"{LOGO} {HER_NICK}（{HER_NAME}）"
-    return f"💜 {ME_NICK}（{ME_NAME}）"
+    return f"💜 {ME_NICK}"
 
 
 def page_tasks() -> None:

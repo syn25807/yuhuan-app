@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""雅楠 & 玉环的小窝 —— 入口文件。
+"""楠 & 玉环的小窝 —— 入口文件。
 
 运行：
     cd couple-app
@@ -16,7 +16,7 @@ from datetime import date, datetime
 import streamlit as st
 
 # set_page_config 必须是第一个 Streamlit 命令，所以放在所有其他 import 之前
-st.set_page_config(page_title="雅楠 & 玉环的小窝", page_icon="💗", layout="centered")
+st.set_page_config(page_title="楠 & 玉环的小窝", page_icon="💗", layout="centered")
 
 import storage as db  # noqa: E402
 import ui  # noqa: E402
@@ -108,7 +108,7 @@ def sidebar() -> None:
 
         st.divider()
         ui.muted("💗 玉环（李玉环）· 洛阳")
-        ui.muted("💜 楠（孙雅楠）· 成都")
+        ui.muted("💜 楠 · 成都")
         ui.muted("隔着 900 多公里，也要好好在一起")
 
 
